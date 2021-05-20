@@ -2,9 +2,9 @@
 
 namespace Bnhashem\FormData;
 
+use Bnhashem\FormData\Commands\FormDataCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Bnhashem\FormData\Commands\FormDataCommand;
 
 class FormDataServiceProvider extends PackageServiceProvider
 {
