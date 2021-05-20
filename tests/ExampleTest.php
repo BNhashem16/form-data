@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Bnhashem\FormData\Tests;
 
 class ExampleTest extends TestCase
 {

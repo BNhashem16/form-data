@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Bnhashem\FormData\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FormDataCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'form-data';
 
     public $description = 'My command';
 
