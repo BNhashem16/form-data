@@ -2,9 +2,9 @@
 
 namespace Bnhashem\FormData\Tests;
 
+use Bnhashem\FormData\FormDataServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Bnhashem\FormData\FormDataServiceProvider;
 
 class TestCase extends Orchestra
 {
