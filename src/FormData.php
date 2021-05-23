@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class FormData
 {
-    public function old($model)
+    public static function old($model)
     {
         $columns = Schema::getColumnListing(($model)->getTable());
         foreach ($columns as $column) {
