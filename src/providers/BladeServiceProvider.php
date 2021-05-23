@@ -1,6 +1,6 @@
 <?php
 
-namespace Bnhashem\Providers\BladeServiceProvider;
+namespace Bnhashem\FormData\Providers\BladeServiceProvider;
 
 use Illuminate\Support\Facades\Blade;
 

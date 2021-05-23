@@ -53,6 +53,7 @@
     "extra": {
         "laravel": {
             "providers": [
+                "Bnhashem\\FormData\\Providers\\BladeServiceProvider",
                 "Bnhashem\\FormData\\FormDataServiceProvider"
             ],
             "aliases": {
