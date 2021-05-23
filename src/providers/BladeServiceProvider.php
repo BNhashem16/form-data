@@ -2,6 +2,8 @@
 
 namespace Bnhashem\Providers\BladeServiceProvider;
 
+use Illuminate\Support\Facades\Blade;
+
 class FormDataServiceProvider extends PackageServiceProvider
 {
     /**
