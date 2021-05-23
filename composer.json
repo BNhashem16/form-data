@@ -29,6 +29,9 @@
         "vimeo/psalm": "^4.4"
     },
     "autoload": {
+        "files": [
+            "src/FormData.php"
+        ],
         "psr-4": {
             "Bnhashem\\FormData\\": "src",
             "Bnhashem\\FormData\\Database\\Factories\\": "database/factories"
