@@ -23,12 +23,12 @@ class FormDataServiceProvider extends PackageServiceProvider
      */
     public function boot()
     {
-        Blade::directive('toastr-css', function ($expression) {
+        Blade::directive('toastrcss', function ($expression) {
             return '<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css" />';
         });
 
 
-        Blade::directive('toastr-js', function ($expression) {
+        Blade::directive('toastrjs', function ($expression) {
             return '<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>';
         });
 
