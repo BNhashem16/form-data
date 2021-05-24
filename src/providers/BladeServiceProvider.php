@@ -34,7 +34,7 @@ class BladeServiceProvider extends ServiceProvider
         });
 
         Blade::directive('session', function ($expression) {
-            return include('forms.session');
+            return include('vendor.form-data.session');
         });
     }
 }
