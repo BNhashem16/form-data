@@ -1,10 +1,11 @@
 <?php
 
-namespace Bnhashem\FormData\Providers\BladeServiceProvider;
+namespace Bnhashem\FormData\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 
-class FormDataServiceProvider extends PackageServiceProvider
+class BladeServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -32,6 +33,8 @@ class FormDataServiceProvider extends PackageServiceProvider
             return '<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>';
         });
 
-        Blade::component('session', 'toastr');
+        Blade::directive('session', function ($expression) {
+            return include('forms.session');
+        });
     }
 }
