@@ -17,9 +17,6 @@ class FormDataServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('form-data')
-            ->hasConfigFile('form-data')
-            ->hasViews('session')
-            ->hasMigration('create_form-data_table')
-            ->hasCommand(FormDataCommand::class);
+            ->hasViews('session');
     }
 }

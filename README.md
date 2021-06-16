@@ -1,29 +1,8 @@
-# This is my package FormData
+# FormData Package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/bnhashem/form-data.svg?style=flat-square)](https://packagist.org/packages/bnhashem/form-data)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/bnhashem/form-data/run-tests?label=tests)](https://github.com/bnhashem/form-data/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/bnhashem/form-data/Check%20&%20fix%20styling?label=code%20style)](https://github.com/bnhashem/form-data/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/bnhashem/form-data.svg?style=flat-square)](https://packagist.org/packages/bnhashem/form-data)
 
----
-This repo can be used as to scaffold a Laravel package. Follow these steps to get started:
-
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this form-data
-2. Run "./configure-form-data.sh" to run a script that will replace all placeholders throughout all the files
-3. Remove this block of text.
-4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/form-data.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/form-data)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -33,37 +12,98 @@ You can install the package via composer:
 composer require bnhashem/form-data
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="Bnhashem\FormData\FormDataServiceProvider" --tag="form-data-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="Bnhashem\FormData\FormDataServiceProvider" --tag="form-data-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
+When you store data in a certain column, and it's found that there are some wrong or incorrect entries (validation failed), the browser will return you to the form with the previous entries you entered.
+
+## What are the features of this package?
+
+- It is easy to make one form of editing and saving into one blade.
+- The values name are the same as the database columns name, so that it helps more to write clean code.
+
 ```php
-$form-data = new Bnhashem\FormData();
-echo $form-data->echoPhrase('Hello, Spatie!');
+use Bnhashem\FormData\FormData;
+
+$formData = new FormData();
 ```
 
-## Testing
+## Create Function
 
-```bash
-composer test
+```php
+use Bnhashem\FormData\FormData;
+
+/**
+ * Show the form for creating a new resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+public function create()
+{
+    return view('your.custom.view', FormData::old(new Model()));
+}
 ```
+
+## Example
+
+you project contain Post Model thats mean you already have posts table, We will imagine that the posts table will be like this 
+
+```php
+/**
+ * Run the migrations.
+ *
+ * @return void
+ */
+public function up()
+{
+    Schema::create('posts', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('content');
+        $table->timestamps();
+    });
+}
+```
+
+## We will try to store a new post
+
+```php
+use Bnhashem\FormData\FormData;
+
+public function create()
+{
+    return view('your.custom.view', FormData::old(new Post()));
+}
+```
+
+Be Focus here, The name of value must be the same as the column name value in the database
+```html
+<div class="form-group col-6">
+    <label>{{ __('Name') }}</label>
+    <input type="text" name="name" value="{{ $name }}">
+    @error('name') <span class="erorr">{{ $message }}</span> @enderror
+</div>
+```
+
+## We will try to edit a post
+
+```php
+use Bnhashem\FormData\FormData;
+
+public function edit(Model $model)
+{
+    return view('your.custom.view', FormData::edit(new Model()));
+}
+```
+
+Be Focus here, The name of value must be the same as the column name value in the database
+```html
+<div class="form-group col-6">
+    <label>{{ __('Name') }}</label>
+    <input type="text" name="name" value="{{ $name }}">
+    @error('name') <span class="erorr">{{ $message }}</span> @enderror
+</div>
+```
+
 
 ## Changelog
 
