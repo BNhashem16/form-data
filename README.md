@@ -164,6 +164,7 @@ class Post extends Model
     @error('name.en') <span class="erorr">{{ $message }}</span> @enderror
 </div>
 
+
 <div class="form-group col-6">
     <label>{{ __('Arabic Name') }}</label>
     <input type="text" name="name['ar']" value="{{ $name['ar'] }}">
