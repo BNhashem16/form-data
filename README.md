@@ -51,7 +51,7 @@ use Bnhashem\FormData\FormData;
 /**
  * Show the form for editing the specified resource.
  *
- * @param  \App\Models\Model $model
+ * @param  \App\Models\Model  $model
  * @return \Illuminate\Http\Response
  */
 
