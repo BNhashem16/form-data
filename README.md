@@ -56,12 +56,10 @@ use Bnhashem\FormData\FormData;
  */
 
 public function edit(Model $model)
-    {
-        return view('your.custom.view', FormData::edit($model));
-    }
+ 
 ```
 
-## Example
+# Example
 
 you project contain Post Model thats mean you already have posts table, We will imagine that the posts table will be like this 
 
@@ -122,6 +120,56 @@ Be Focus here, The name of value must be the same as the column name value in th
 </div>
 ```
 
+# Json Columns
+> Somtimes Column have many values and unique keys, in this case We will do the following: 
+
+#### posts table migration
+```php
+public function up()
+{
+    Schema::create('posts', function (Blueprint $table) {
+        $table->id();
+        $table->json('name');
+        $table->json('content');
+    });
+}
+```
+
+#### Post Model
+You will adding a static property ``$JSONCOLUMNS`` , You will add to it the column name and the the keys that you want to add in the blade.
+
+
+```php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+
+    public static $JSONCOLUMNS = [
+        'name' => ['en', 'ar'], 
+        'content' => ['ar', 'en']
+        ];
+
+}
+
+```
+#### Fetch Data From Json columns in blade
+
+```html
+<div class="form-group col-6">
+    <label>{{ __('English Name') }}</label>
+    <input type="text" name="name['en']" value="{{ $name['en'] }}">
+    @error('name.en') <span class="erorr">{{ $message }}</span> @enderror
+</div>
+
+<div class="form-group col-6">
+    <label>{{ __('Arabic Name') }}</label>
+    <input type="text" name="name['ar']" value="{{ $name['ar'] }}">
+    @error('name.ar') <span class="erorr">{{ $message }}</span> @enderror
+</div>
+```
 
 ## Changelog
 
@@ -137,7 +185,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Ahmed Mohamed Salah Hashem](https://github.com/BNhashem16)
+- [Ahmed Mohamed Hashem](https://github.com/BNhashem16)
 - [All Contributors](../../contributors)
 
 ## License
