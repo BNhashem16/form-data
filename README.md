@@ -43,6 +43,24 @@ public function create()
 }
 ```
 
+## Edit Function
+
+```php
+use Bnhashem\FormData\FormData;
+
+/**
+ * Show the form for editing the specified resource.
+ *
+ * @param  \App\Models\Model  $model
+ * @return \Illuminate\Http\Response
+ */
+
+public function edit(Model $model)
+    {
+        return view('your.custom.view', FormData::edit($model));
+    }
+```
+
 ## Example
 
 you project contain Post Model thats mean you already have posts table, We will imagine that the posts table will be like this 
@@ -89,9 +107,9 @@ Be Focus here, The name of value must be the same as the column name value in th
 ```php
 use Bnhashem\FormData\FormData;
 
-public function edit(Model $model)
+public function edit(Post $post)
 {
-    return view('your.custom.view', FormData::edit(new Model()));
+    return view('your.custom.view', FormData::edit($post));
 }
 ```
 
