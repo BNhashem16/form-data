@@ -149,7 +149,7 @@ class Post extends Model
 
     public static $JSONCOLUMNS = [
         'name' => ['en', 'ar'], 
-        'content' => ['ar', 'en']
+        'content' => ['ar', 'en'] 
         ];
 
 }
