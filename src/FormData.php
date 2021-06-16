@@ -44,7 +44,6 @@ class FormData
         }
     }
 
-
     public static function jsonColumnsIsset($model): bool
     {
         return isset($model::$JSONCOLUMNS) ? true : false;
