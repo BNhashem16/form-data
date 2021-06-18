@@ -1,5 +1,7 @@
 # FormData Package
 
+Make your database columns available in your blade view effortlessly. 
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/bnhashem/form-data.svg?style=flat-square)](https://packagist.org/packages/bnhashem/form-data)
 [![Total Downloads](https://img.shields.io/packagist/dt/bnhashem/form-data.svg?style=flat-square)](https://packagist.org/packages/bnhashem/form-data)
 
@@ -12,14 +14,11 @@ You can install the package via composer:
 composer require bnhashem/form-data
 ```
 
-## Usage
+## Features
 
-When you store data in a certain column, and it's found that there are some wrong or incorrect entries (validation failed), the browser will return you to the form with the previous entries you entered.
-
-## What are the features of this package?
-
-- It is easy to make one form of editing and saving into one blade.
-- The values name are the same as the database columns name, so that it helps more to write clean code.
+- Incredibly easy to use.
+- Help use signle form for create and update.
+- The values name are the same as the database columns name, save you calling `old` conditionally in the view.
 
 ```php
 use Bnhashem\FormData\FormData;
@@ -27,7 +26,9 @@ use Bnhashem\FormData\FormData;
 $formData = new FormData();
 ```
 
-## Create Function
+## Usage
+
+## Create
 
 ```php
 use Bnhashem\FormData\FormData;
@@ -43,7 +44,7 @@ public function create()
 }
 ```
 
-## Edit Function
+## Edit 
 
 ```php
 use Bnhashem\FormData\FormData;
@@ -56,12 +57,12 @@ use Bnhashem\FormData\FormData;
  */
 
 public function edit(Model $model)
- 
+{
+    return view('your.custom.view', FormData::edit($model);
+}
 ```
 
 # Example
-
-you project contain Post Model thats mean you already have posts table, We will imagine that the posts table will be like this 
 
 ```php
 /**
@@ -91,7 +92,7 @@ public function create()
 }
 ```
 
-Be Focus here, The name of value must be the same as the column name value in the database
+Mind that the name of variable must be the same as the column name value in the database
 ```html
 <div class="form-group col-6">
     <label>{{ __('Name') }}</label>
@@ -111,7 +112,7 @@ public function edit(Post $post)
 }
 ```
 
-Be Focus here, The name of value must be the same as the column name value in the database
+
 ```html
 <div class="form-group col-6">
     <label>{{ __('Name') }}</label>
@@ -136,7 +137,7 @@ public function up()
 ```
 
 #### Post Model
-You will adding a static property ``$JSONCOLUMNS`` , You will add to it the column name and the the keys that you want to add in the blade.
+Add static property ``$JSONCOLUMNS``, with column names and the the keys that you want to add in the blade.
 
 
 ```php
