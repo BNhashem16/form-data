@@ -2,20 +2,14 @@
 
 namespace Bnhashem\FormData;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class FormDataServiceProvider extends PackageServiceProvider
+class FormDataServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public function register()
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('form-data')
-            ->hasViews('session');
+        $this->app->bind('FormData', function () {
+            return new FormData;
+        });
     }
 }
